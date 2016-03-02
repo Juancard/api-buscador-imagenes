@@ -1,0 +1,14 @@
+{
+  "name": "API-buscador-imagenes",
+  "version": "0.0.1",
+  "description": "API buscador de imagenes por palabra clave",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Juancard/api-buscador-imagenes.git"
+  },
+  "author": "Juan Cardona <juan_cardona@outlook.com",
+  "dependencies": {
+    "bing.search": "~1.0.1",
+  }
+}
