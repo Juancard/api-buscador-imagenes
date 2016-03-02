@@ -9,6 +9,7 @@
   },
   "author": "Juan Cardona <juan_cardona@outlook.com",
   "dependencies": {
-    "bing.search": "~1.0.1",
+    "dotenv": "^1.2.0",
+    "bing.search": "~1.0.1"
   }
 }
