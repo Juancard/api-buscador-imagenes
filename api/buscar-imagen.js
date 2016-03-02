@@ -1,12 +1,18 @@
 var Search = require('bing.search');
 var util = require('util');
 
-search = new Search('account_key_123');
+module.exports = function(key){
+	search = new Search(key);
+	console.log("en busqueda");
+	buscarWeb(search);
+}
 
-search.web('Tutta Bella Neapolitan Pizzeria',
-  {top: 5},
-  function(err, results) {
-    console.log(util.inspect(results, 
-      {colors: true, depth: null}));
-  }
-);
+function buscarWeb(search){
+	search.web('Tutta Bella Neapolitan Pizzeria',
+	  {top: 5},
+	  function(err, results) {
+	    console.log(util.inspect(results, 
+	      {colors: true, depth: null}));
+	  }
+	);
+}

@@ -18,7 +18,7 @@ var servidor = http.createServer(function(req,res){
   	var urlParseada = req.url.match(/(^\/api)(\/[a-z]+)(.+)/);
   	if (urlParseada && urlParseada[1]=="/api"){
   		if (urlParseada[2]=="/imagesearch"){
-  			console.log("Se busca",urlParseada[3]);
+  			api("RQwMErd7nJDh3nNuKtuvApqKyhLPIgTDurJ6jOm4BNQ"||process.env.BING_KEY);
   		} else if (urlParseada[2]=="/latest"){
   			console.log("ultimos resultados");
   		} else{
