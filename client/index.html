@@ -2,34 +2,26 @@
 <html lang="es">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>API - Acortador Url</title>
+    <title>API - Buscador de Imágenes</title>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
   </head>
 
 <body>
   <div class="container">
     <h1 class="header">
-      API: Acortador Url
+      API: Buscador de Imágenes
     </h1>
     <blockquote>
       Historias de usuario:
-      <ul><li>Puedo pasar una URL como parametro y voy a recibir una URL acortado como respuesta JSON.</li></ul>
-      <ul><li>Cuando visite esa URL acortada, me redirigirá a mi link original.</li></ul>
+      <ul><li>Puedo obtener la URL de la imagen, texto alternativo (alt) y url de la página web relativo a una cadena de caracteres dada.</li></ul>
+      <ul><li>Puedo elegir la página de respuesta agregando ?offset=[numero-pagina] como parametro a la URL.</li></ul>
+      <ul><li>Puedo obtener una lista de las busquedas realizadas más recientes.</li></ul>
     </blockquote>
-    <h3>Ejemplo de uso en creación:</h3>
-    <code><a href="https://acortador23.herokuapp.com/new/https://www.google.com">https://acortador23.herokuapp.com/new/https://www.google.com</a></code>
+    <h3>Ejemplo de búsquedas:</h3>
+    <code><a href="https://floating-headland-39020.herokuapp.com/api/imagesearch/gato%20perro">https://floating-headland-39020.herokuapp.com/api/imagesearch/gato%20perro</a></code>
     <br>
-    <code><a href="https://acortador23.herokuapp.com/new/http://blog.codinghorror.com/">https://acortador23.herokuapp.com/new/http://blog.codinghorror.com/</a></code>
-    <h3>Ejemplo de salida en creación</h3>
-    <code>
-      {
-        "url_original": "http://blog.codinghorror.com/",
-        "url_corta": "https://acortador23.herokuapp.com/VkI4bCcjl"
-      }
-    </code>
-    <h3>Usar:</h3>
-    <code><a href="https://acortador23.herokuapp.com/VkI4bCcjl">https://acortador23.herokuapp.com/VkI4bCcjl</a></code>
-    <h3>Redirecciona a:</h3>
-    <code><a href="http://blog.codinghorror.com/">http://blog.codinghorror.com/</a></code>
+    <code><a href="https://floating-headland-39020.herokuapp.com/api/imagesearch/gato%20perro?offset=10">https://floating-headland-39020.herokuapp.com/api/imagesearch/gato%20perro?offset=10</a></code>
+    <h3>Obtener historial:</h3>
+    <code><a href="https://floating-headland-39020.herokuapp.com/api/latest/imagesearch/">https://floating-headland-39020.herokuapp.com/api/latest/imagesearch/</a></code>
   </div>
 </body></html>

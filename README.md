@@ -11,13 +11,13 @@
 ## Ejemplo de busquedas:
 
 ```url
-https://xxx.herokuapp.com/api/imagesearch/gato%20perro
+https://floating-headland-39020.herokuapp.com/api/imagesearch/gato%20perro
 
-https://xxx.herokuapp.com/api/imagesearch/gato%20perro?offset=10 
+https://floating-headland-39020.herokuapp.com/api/imagesearch/gato%20perro?offset=10 
 ```
 
 ## Obtener historial:
 
 ```url
-https://xxx.herokuapp.com/api/latest/imagesearch/
+https://floating-headland-39020.herokuapp.com/api/latest/imagesearch/
 ```
