@@ -1,25 +1,24 @@
 var Search = require('bing.search');
-var util = require('util');
 var url = require('url');
 var busqueda;
 
 module.exports = function(key,urlQuery){
-	var limiteResultados = 50;
+	var limiteResultados = 10;
 	busqueda = new Search(key,limiteResultados);
 	var jsonQuery = parsearUrlQuery(urlQuery);
 	console.log(jsonQuery.cadena,jsonQuery.offset);
 	
-	/*
-	buscarWeb(cadenaBusqueda,{top:10}, function(err, results) {
+	
+	buscarImagenes(jsonQuery.cadena,{top:10,skip:10*jsonQuery.offset}, function(err, results) {
 	    if (err) throw err;
-	    	console.log("entre");
-		  console.log(util.inspect(results, {colors: true, depth: null}));
+	    console.log("Tamaño resultado",results.length);
+	    console.log(results);
 	});
-	*/
+
 }
 
-function buscarWeb(query,options,callback){
-	busqueda.web(query,options,callback);
+function buscarImagenes(query,options,callback){
+	busqueda.images(query,options,callback);
 }
 
 function parsearUrlQuery(urlQuery){
@@ -32,7 +31,7 @@ function parsearUrlQuery(urlQuery){
  	return makeJson(cadenaBusqueda,offset);
 
  	function esQueryValida(query){
- 		return (query.indexOf(propiedad+"=") == 0) && (getValorQuery(query) >= 0);
+ 		return (query) && (query.indexOf(propiedad+"=") == 0) && (getValorQuery(query) >= 0);
  	}
 
  	function getValorQuery(query){
