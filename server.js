@@ -1,7 +1,6 @@
 var http = require("http");
 var fs = require("fs");
 var api = require("./api/buscar-imagen");
-var url = require("url");
 
 require('dotenv').config();
 
@@ -14,11 +13,10 @@ var servidor = http.createServer(function(req,res){
       res.end(data);
     })
   } else {
-  	var objetoUrl = url.parse(req.url);
-  	var urlParseada = req.url.match(/(^\/api)(\/[a-z]+)(.+)/);
+  	var urlParseada = req.url.match(/(^\/api)(\/[a-z]+)(\/.+)?/);
   	if (urlParseada && urlParseada[1]=="/api"){
-  		if (urlParseada[2]=="/imagesearch"){
-  			api(process.env.BING_KEY);
+  		if (urlParseada[2]=="/imagesearch" && urlParseada[3]){
+  			api(process.env.BING_KEY,urlParseada[3].slice(1));
   		} else if (urlParseada[2]=="/latest"){
   			console.log("ultimos resultados");
   		} else{
