@@ -9,7 +9,7 @@ module.exports = function(key,urlQuery){
 	console.log(jsonQuery.cadena,jsonQuery.offset);
 	
 	
-	buscarImagenes(jsonQuery.cadena,{top:10,skip:10*jsonQuery.offset}, function(err, results) {
+	buscarImagenes(jsonQuery.cadena,jsonQuery.offset, function(err, results) {
 	    if (err) throw err;
 	    console.log("Tamaño resultado",results.length);
 	    console.log(results);
@@ -17,8 +17,13 @@ module.exports = function(key,urlQuery){
 
 }
 
-function buscarImagenes(query,options,callback){
-	busqueda.images(query,options,callback);
+function buscarImagenes(cadena,offset,callback){
+	var resultadosPorPágina = 10;
+	var options = {
+		top : resultadosPorPágina,
+		skip : resultadosPorPágina * offset
+	}
+	busqueda.images(cadena,options,callback);
 }
 
 function parsearUrlQuery(urlQuery){
