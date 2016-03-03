@@ -2,7 +2,7 @@ var Search = require('bing.search');
 var url = require('url');
 var busqueda;
 
-module.exports = function(key,urlQuery){
+module.exports = function(res,key,urlQuery){
 	var limiteResultados = 10;
 	busqueda = new Search(key,limiteResultados);
 	var jsonQuery = parsearUrlQuery(urlQuery);
@@ -12,9 +12,34 @@ module.exports = function(key,urlQuery){
 	buscarImagenes(jsonQuery.cadena,jsonQuery.offset, function(err, results) {
 	    if (err) throw err;
 	    console.log("Tamaño resultado",results.length);
-	    console.log(results);
+	    var arregloImagenes = generarArregloImagenes(results);
+	    enviarJson(res,arregloImagenes);
 	});
 
+}
+
+function enviarJson(res,arregloImagenes){
+	res.writeHead(200, {"content-type": "text/json; charset=UTF-8"});
+	/*
+	arregloImagenes.forEach(function(json){
+		res.write(JSON.stringify(json));
+	});
+	*/
+    res.end(JSON.stringify(arregloImagenes));
+}
+
+function generarArregloImagenes(results){
+	var arreglo = [];
+	results.forEach(function(imagen){
+		var json = {
+			url_imagen: imagen.url,
+			titulo: imagen.title,
+			url_pagina: imagen.sourceUrl,
+			thumbnail: imagen.thumbnail.url
+		}
+		arreglo.push(json);
+	});
+	return arreglo;
 }
 
 function buscarImagenes(cadena,offset,callback){
