@@ -12,34 +12,24 @@ module.exports = function(res,key,urlQuery){
 	buscarImagenes(jsonQuery.cadena,jsonQuery.offset, function(err, results) {
 	    if (err) throw err;
 	    console.log("Tamaño resultado",results.length);
-	    var arregloImagenes = generarArregloImagenes(results);
-	    enviarJson(res,arregloImagenes);
+	    enviarJson(res,results);
 	});
 
 }
 
-function enviarJson(res,arregloImagenes){
-	res.writeHead(200, {"content-type": "text/json; charset=UTF-8"});
-	/*
-	arregloImagenes.forEach(function(json){
-		res.write(JSON.stringify(json));
-	});
-	*/
-    res.end(JSON.stringify(arregloImagenes));
-}
-
-function generarArregloImagenes(results){
-	var arreglo = [];
+function enviarJson(res,results){
+	res.writeHead(200, {"content-type": "application/json; charset=UTF-8"});
+	var a = [];
 	results.forEach(function(imagen){
 		var json = {
 			url_imagen: imagen.url,
 			titulo: imagen.title,
 			url_pagina: imagen.sourceUrl,
 			thumbnail: imagen.thumbnail.url
-		}
-		arreglo.push(json);
+		};
+		a.push(json);
 	});
-	return arreglo;
+    res.end(JSON.stringify(a));
 }
 
 function buscarImagenes(cadena,offset,callback){
