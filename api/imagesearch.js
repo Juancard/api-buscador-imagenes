@@ -2,9 +2,8 @@ var Search = require('bing.search');
 var url = require('url');
 var busqueda;
 
-module.exports = function(res,key,urlQuery){
+module.exports = function(res,Modelo,key,urlQuery){
 	var limiteResultados = 10;
-	console.log(process.env.BING_KEY);
 	busqueda = new Search(key,limiteResultados);
 	var jsonQuery = parsearUrlQuery(urlQuery);
 	console.log(jsonQuery.cadena,jsonQuery.offset);
@@ -14,8 +13,18 @@ module.exports = function(res,key,urlQuery){
 	    if (err) throw err;
 	    console.log("Tamaño resultado",results.length);
 	    enviarJson(res,results);
+	    guardarEnModelo(Modelo,jsonQuery.cadena);
 	});
 
+}
+
+function guardarEnModelo(Modelo,cadena){
+	var fecha = new Date();
+	var registro = new Modelo({cadena: cadena, timestamp: fecha});
+	registro.save(function(err,results){
+		if (err) throw err;
+		console.log("Guardado", results);
+	});
 }
 
 function enviarJson(res,results){
