@@ -25,7 +25,7 @@ var servidor = http.createServer(function(req,res){
 		if (urlParseada && urlParseada[1]=="/api"){
 			if (urlParseada[2]=="/imagesearch" && urlParseada[3]){
 				api(res,busquedaModelo,process.env.BING_KEY,urlParseada[3].slice(1));
-			} else if (urlParseada[2]=="/latest" && urlParseada[3] == "/imagesearch"){
+			} else if (urlParseada[2]=="/latest" && urlParseada[3].match(/^(\/imagesearch)(\/)?$/)){
 				console.log("en historial");
 				mostrarHistorial(res,BusquedaModelo);
 			} else{
