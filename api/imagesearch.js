@@ -4,6 +4,7 @@ var busqueda;
 
 module.exports = function(res,key,urlQuery){
 	var limiteResultados = 10;
+	console.log(process.env.BING_KEY);
 	busqueda = new Search(key,limiteResultados);
 	var jsonQuery = parsearUrlQuery(urlQuery);
 	console.log(jsonQuery.cadena,jsonQuery.offset);

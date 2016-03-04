@@ -10,6 +10,7 @@
   "author": "Juan Cardona <juan_cardona@outlook.com",
   "dependencies": {
     "dotenv": "^1.2.0",
+    "mongoose": "~4.4.6",
     "bing.search": "~1.0.1"
   }
 }
